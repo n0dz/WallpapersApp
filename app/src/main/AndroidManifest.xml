@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.nodz.wall">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<<<<<<< HEAD
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+=======
+>>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Wall"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+<<<<<<< HEAD
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <activity android:name=".Activity.ResultsActivity"></activity>
+        <activity android:name=".Activity.SplashActivity">
+
+=======
+        <activity android:name=".Activity.ResultsActivity"></activity>
+        <activity android:name=".Activity.SplashActivity">
+
+        </activity>
+        <activity android:name=".Activity.SetWallpaperActivity" />
+        <activity android:name=".Activity.MainActivity">
+
+>>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+<<<<<<< HEAD
+        <activity android:name=".Activity.SetWallpaperActivity" />
+        <activity android:name=".Activity.MainActivity">
+        </activity>
+=======
+>>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

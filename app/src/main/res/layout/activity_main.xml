@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainActivity"
+    android:background="@drawable/wallappback"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+<<<<<<< HEAD
+        android:layout_marginLeft="40dp"
+        android:orientation="vertical"
+        >
+
+=======
+        android:orientation="vertical"
+        >
+
+        <!-- <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etQuery"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:hint="@string/search_wallpapers"
+            android:textColorHint="#FFF"
+            android:textAlignment="center"
+            android:background="@drawable/bg_query"
+            android:padding="10dp"
+            android:textColor="#FFFF"
+            android:layout_weight="2"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_horizontal" /> -->
+
+>>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchWall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Wall.TextInputLayout"
+<<<<<<< HEAD
+            android:layout_marginLeft="20dp"
+
+=======
+>>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etQuery"
+                android:layout_width="300dp"
+<<<<<<< HEAD
+=======
+                android:layout_marginLeft="10dp"
+>>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
+                android:layout_height="wrap_content"
+                android:hint="Search wallpapers"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:inputType="text"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+<<<<<<< HEAD
+            <com.google.android.material.button.MaterialButton
+                android:textColor="@color/black"
+=======
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:textColor="@color/white"
+>>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
+                android:id="@+id/searchBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                style="@style/Widget.MaterialComponents.Button"
+<<<<<<< HEAD
+                android:elevation="2dp"
+=======
+>>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
+                android:text="@string/search"
+                android:layout_gravity="end"
+                />
+
+<<<<<<< HEAD
+    </LinearLayout>
+
+=======
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+
+    <!--
+    <com.cooltechworks.views.shimmer.ShimmerRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+
+        app:shimmer_demo_grid_child_count="2"
+
+        app:shimmer_demo_layout_manager_type="grid"
+        />
+-->
+>>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
+</RelativeLayout>
