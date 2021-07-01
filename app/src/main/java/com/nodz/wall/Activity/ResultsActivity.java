@@ -109,14 +109,9 @@ public class ResultsActivity extends AppCompatActivity {
         private void loadDataIntoRecyclerView(ArrayList<WallModel> list) {
             WallAdapter adapter = new WallAdapter(ResultsActivity.this, list);
             recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new GridLayoutManager(ResultsActivity.this, 2));
+            recyclerView.setLayoutManager(new GridLayoutManager(ResultsActivity.this, 3));
         }
 
     }
-
-//    public void onStart() {
-//        super.onStart();
-//        MainActivity.p.setVisibility(View.INVISIBLE);
-//    }
 
 }

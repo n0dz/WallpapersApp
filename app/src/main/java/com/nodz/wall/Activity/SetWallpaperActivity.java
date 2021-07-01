@@ -2,7 +2,7 @@ package com.nodz.wall.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-<<<<<<< HEAD
+
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.FileProvider;
@@ -12,22 +12,14 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-=======
 
-import android.Manifest;
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
 import android.app.WallpaperManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-<<<<<<< HEAD
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
-=======
-import android.os.AsyncTask;
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
@@ -49,19 +41,11 @@ import java.net.URL;
 public class SetWallpaperActivity extends AppCompatActivity {
 
     ImageView im;
-<<<<<<< HEAD
     Button btnSetWall, btnDownWall;
     String ImgUrl = "", img_location="";
     Bitmap bitmap;
     String imageFileName = "IMG_" + System.currentTimeMillis() + ".jpg";
     File dir;
-=======
-    TextView tvTags;
-    Button btnSetWall, btnDownWall;
-    String ImgUrl = "", tags_text="";
-    Bitmap bitmap;
-    String imageFileName = "IMG_" + System.currentTimeMillis() + ".jpg";
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,17 +55,9 @@ public class SetWallpaperActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(SetWallpaperActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         ActivityCompat.requestPermissions(SetWallpaperActivity.this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},1);
 
-<<<<<<< HEAD
-
         im = findViewById(R.id.imageWall);
         btnSetWall = findViewById(R.id.setwallpaper);
         btnDownWall = findViewById(R.id.getWallpaper);
-=======
-        im = findViewById(R.id.imageWall);
-        btnSetWall = findViewById(R.id.setwallpaper);
-        btnDownWall = findViewById(R.id.getWallpaper);
-        //tvTags = findViewById(R.id.tvTags);
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
 
         getSupportActionBar().hide();
         ImgUrl = getIntent().getStringExtra("ImgUrl");
@@ -102,21 +78,16 @@ public class SetWallpaperActivity extends AppCompatActivity {
 
             }
         });
-
-<<<<<<< HEAD
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("Download","DownNotif",NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
 
-=======
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
-        btnDownWall.setOnClickListener(new View.OnClickListener() {
+    btnDownWall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveImage();
-<<<<<<< HEAD
                 Intent notifyIntent = new Intent();
                 notifyIntent.setAction(Intent.ACTION_GET_CONTENT);
                 notifyIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -137,16 +108,10 @@ public class SetWallpaperActivity extends AppCompatActivity {
                 NotificationManagerCompat managerCompat = NotificationManagerCompat.from(SetWallpaperActivity.this);
                 managerCompat.notify(1,builder.build());
 
-=======
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
-            }
+       }
         });
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
     public void saveImage(){
 
         BitmapDrawable drawable = (BitmapDrawable) im.getDrawable();
@@ -154,12 +119,9 @@ public class SetWallpaperActivity extends AppCompatActivity {
 
         FileOutputStream outputStream = null;
         File file = Environment.getExternalStorageDirectory();
-<<<<<<< HEAD
         dir = new File(file.getAbsolutePath()+"/IMAGES");
         img_location = file.getAbsolutePath();
-=======
         File dir = new File(file.getAbsolutePath()+"/IMAGES");
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
 
         if(!dir.exists())
             dir.mkdir();
@@ -183,13 +145,7 @@ public class SetWallpaperActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-<<<<<<< HEAD
-
         Toast.makeText(this, "Downloaded  :"+dir.getAbsolutePath(), Toast.LENGTH_LONG).show();
-
-=======
-        Toast.makeText(this, "Downloaded  :"+dir.getAbsolutePath(), Toast.LENGTH_LONG).show();
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
         Log.i("PATH :",dir.getAbsolutePath());
     }
 
@@ -234,7 +190,3 @@ public class SetWallpaperActivity extends AppCompatActivity {
         }
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d

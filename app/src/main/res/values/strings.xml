@@ -5,10 +5,8 @@
     <string name="tags">tags</string>
     <string name="wallpaperapp">WallpaperApp</string>
     <string name="loading">loading</string>
-<<<<<<< HEAD
     <string name="channel_name">NotificationChannel</string>
     <string name="channel_description">ChannelDescription</string>
-=======
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
+
 
 </resources>

@@ -47,34 +47,26 @@
             android:id="@+id/getWallpaper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="@color/purple_500"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:text="Download"
-<<<<<<< HEAD
-            android:elevation="2dp"
-=======
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
             android:textColor="@color/black" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/setwallpaper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="@color/purple_500"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-<<<<<<< HEAD
-            android:elevation="2dp"
             android:layout_marginBottom="10dp"
             android:padding="8dp"
             android:text="Apply"
             android:textColor="@color/black"
             android:layout_marginStart="5dp" />
-=======
-            android:layout_marginBottom="10dp"
-            android:padding="8dp"
-            android:text="Apply"
-            android:textColor="@color/black" />
->>>>>>> f8003b5d00792689e01e8244127f7039b7260f6d
     </LinearLayout>
 
 </RelativeLayout>
