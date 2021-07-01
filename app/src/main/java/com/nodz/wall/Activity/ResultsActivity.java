@@ -1,12 +1,17 @@
 package com.nodz.wall.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
@@ -15,6 +20,7 @@ import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.nodz.wall.Apadter.WallAdapter;
 import com.nodz.wall.Model.WallModel;
 import com.nodz.wall.R;
+import com.nodz.wall.databinding.ActivityResultsBinding;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,22 +35,21 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class ResultsActivity extends AppCompatActivity {
-
-    ShimmerRecyclerView recyclerView;
     ArrayList<WallModel> list;
     String base = "https://pixabay.com/api/?key=21942328-3b403fd14df4f4bef82d7991b&q=";
     String json_url = "";
-    ProgressDialog dialog;
+    ActivityResultsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_results);
-        getSupportActionBar().hide();
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        binding = ActivityResultsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        recyclerView = findViewById(R.id.recyclerView);
-        //recyclerView.showShimmerAdapter();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Toolbar toolbar = findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+
         list = new ArrayList<>();
 
         json_url = base + getIntent().getStringExtra("URL");
@@ -52,6 +57,7 @@ public class ResultsActivity extends AppCompatActivity {
         getData.execute();
 
     }
+
     public class GetData extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... strings) {
@@ -96,7 +102,6 @@ public class ResultsActivity extends AppCompatActivity {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                     WallModel model = new WallModel(getApplicationContext(), list);
-                    //model.setDown(jsonObject1.getString("downloads"));
                     model.setUrl(jsonObject1.getString("largeImageURL"));
                     list.add(model);
                 }
@@ -108,10 +113,25 @@ public class ResultsActivity extends AppCompatActivity {
 
         private void loadDataIntoRecyclerView(ArrayList<WallModel> list) {
             WallAdapter adapter = new WallAdapter(ResultsActivity.this, list);
-            recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new GridLayoutManager(ResultsActivity.this, 3));
+            binding.recyclerView.setAdapter(adapter);
+            binding.recyclerView.setLayoutManager(new GridLayoutManager(ResultsActivity.this, 3));
+            binding.recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.HORIZONTAL));
+            binding.recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL));
         }
-
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.results_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.searchBtnRes:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

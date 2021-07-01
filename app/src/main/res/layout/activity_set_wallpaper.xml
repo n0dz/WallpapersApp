@@ -48,24 +48,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:strokeColor="@color/purple_500"
+            app:strokeColor="#000000"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:text="Download"
-            android:textColor="@color/black" />
+            android:textColor="#000" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/setwallpaper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:strokeColor="@color/purple_500"
+            app:strokeColor="#000"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:padding="8dp"
             android:text="Apply"
-            android:textColor="@color/black"
+            android:textColor="#000"
             android:layout_marginStart="5dp" />
     </LinearLayout>
 

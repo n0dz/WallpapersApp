@@ -21,12 +21,11 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.nodz.wall.R;
+import com.nodz.wall.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextInputEditText et;
-    MaterialButton findbtn;
-    //public  static ProgressBar p;
+    ActivityMainBinding binding;
 
     @Override
     public void onBackPressed() {
@@ -36,36 +35,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
-
+        //getSupportActionBar().hide();
 
         InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
-        et = findViewById(R.id.etQuery);
-        findbtn = findViewById(R.id.searchBtn);
-
-        findbtn.setOnClickListener(new View.OnClickListener() {
+        binding.searchBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                if (et.getText().toString().isEmpty()) {
+                if (binding.etQuery.getText().toString().isEmpty()) {
                     return;
-                } else {
-
-//                    p = (ProgressBar)findViewById(R.id.progressBar1);
-//                    if(p.getVisibility() != View.VISIBLE){ // check if it is visible
-//                        p.setVisibility(View.VISIBLE); // if not set it to visible
-//                        v.setVisibility(View.VISIBLE); // use 1 or 2 as parameters.. arg0 is the view(your button) from the onclick listener
-//                    }
-
+                }
+                else {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
 
                     Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
-                    intent.putExtra("URL", et.getText().toString());
+                    intent.putExtra("URL", binding.etQuery.getText().toString());
                     startActivity(intent);
                 }
             }

@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.nodz.wall.R;
+import com.nodz.wall.databinding.ActivitySetWallpaperBinding;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,37 +41,33 @@ import java.net.URL;
 
 public class SetWallpaperActivity extends AppCompatActivity {
 
-    ImageView im;
-    Button btnSetWall, btnDownWall;
     String ImgUrl = "", img_location="";
     Bitmap bitmap;
     String imageFileName = "IMG_" + System.currentTimeMillis() + ".jpg";
     File dir;
+    ActivitySetWallpaperBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_wallpaper);
+        binding = ActivitySetWallpaperBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         ActivityCompat.requestPermissions(SetWallpaperActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         ActivityCompat.requestPermissions(SetWallpaperActivity.this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},1);
 
-        im = findViewById(R.id.imageWall);
-        btnSetWall = findViewById(R.id.setwallpaper);
-        btnDownWall = findViewById(R.id.getWallpaper);
-
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         ImgUrl = getIntent().getStringExtra("ImgUrl");
 
         try {
             Glide.with(this)
                     .load(ImgUrl)
-                    .into(im);
+                    .into(binding.imageWall);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        btnSetWall.setOnClickListener(new View.OnClickListener() {
+        binding.setwallpaper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GetImageFromUrl getImageFromUrl = new GetImageFromUrl();
@@ -84,43 +81,40 @@ public class SetWallpaperActivity extends AppCompatActivity {
             manager.createNotificationChannel(channel);
         }
 
-    btnDownWall.setOnClickListener(new View.OnClickListener() {
+    binding.getWallpaper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveImage();
+/*
                 Intent notifyIntent = new Intent();
                 notifyIntent.setAction(Intent.ACTION_GET_CONTENT);
                 notifyIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 notifyIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                 notifyIntent.setDataAndType(FileProvider.getUriForFile(SetWallpaperActivity.this,getApplicationContext().getPackageName()+".provider",dir), "file/*");
                 PendingIntent pendingIntent = PendingIntent.getActivity(SetWallpaperActivity.this, 1, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                //Uri photoURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", createImageFile());
-
-
+*/
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(SetWallpaperActivity.this, "Download");
                 builder.setContentTitle("DownloadedWallpaper");
-                builder.setContentText("Location :"+img_location);
+                builder.setContentText("Location : sdCard0/IMAGES/"+imageFileName);
                 builder.setSmallIcon(R.drawable.ic_baseline_arrow_downward_24);
-                builder.setContentIntent(pendingIntent);
+                //builder.setContentIntent(pendingIntent);
                 builder.setAutoCancel(true);
 
                 NotificationManagerCompat managerCompat = NotificationManagerCompat.from(SetWallpaperActivity.this);
                 managerCompat.notify(1,builder.build());
-
        }
         });
     }
 
     public void saveImage(){
 
-        BitmapDrawable drawable = (BitmapDrawable) im.getDrawable();
+        BitmapDrawable drawable = (BitmapDrawable) binding.imageWall.getDrawable();
         Bitmap bmp = drawable.getBitmap();
 
         FileOutputStream outputStream = null;
         File file = Environment.getExternalStorageDirectory();
         dir = new File(file.getAbsolutePath()+"/IMAGES");
-        img_location = file.getAbsolutePath();
+        //img_location = file.getAbsolutePath();
         File dir = new File(file.getAbsolutePath()+"/IMAGES");
 
         if(!dir.exists())
